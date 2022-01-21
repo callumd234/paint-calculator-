@@ -1,10 +1,15 @@
-import javax.swing.*;
 import java.util.Scanner;
 
 public class Main {
 
+    public static String whichPaintColour() {
+        int c = (int) (Math.random()*2);
+        String paintColour = new String [] {"Green", "Red", "Blue"}[c];
+        System.out.println("The chosen colour for your paint is " + paintColour);
+        return paintColour;
+    }
     public static void main(String[] args) {
-        
+
         double priceOfPaintPerMeter = 6.24;
         int paintCoveragePerMeter = 10;
 
@@ -16,8 +21,8 @@ public class Main {
             System.out.println("What day will the work be started on?");
             String whatDayWillWeWorkOn = userInput.nextLine();
 
-            System.out.println("Which paint do you require?");
-            String chosenPaint = userInput.nextLine();
+            System.out.println("Which paint do you require? For 'Duffy's Magic Paint - 1' 'Bug Boys Paint - 2' 'Jan Cohort Paint - 3");
+            int chosenPaint = Integer.parseInt(userInput.nextLine());
 
             System.out.println("Please enter the amount of walls you need painting?");
             int amountOfWalls = Integer.parseInt(userInput.nextLine());
@@ -61,21 +66,26 @@ public class Main {
                 System.out.println("The quote is too expensive for the customer");
             }
 
+            if (chosenPaint == 1){
+                System.out.println("You have selected Duffy's Magic Paint out of the following three options below");
+            }
+            if (chosenPaint == 2){
+                System.out.println("You have selected Bug Boys Paint out of the following three options below");
+            }
+            else if (chosenPaint == 3){
+                System.out.println("You have selected Jan Cohort Paint out of the following three options below");
+            }
 
             if (whatDayWillWeWorkOn.equals("Saturday") || whatDayWillWeWorkOn.equals("saturday")) {
                 totalLabourCost = (int) ((pricePerHour * 1.5) * howManyHoursWork * howManyWorkers);
             }
 
-            String [] paintNamesArray = {"Duffy Magic Paint", "Bug Man Paint", "Normal Paint"};
+            String [] paintNamesArray = {"Duffy Magic Paint", "Bug Boys Paint", "Jan Cohort Paint"};
 
             for (int j =0; j < paintNamesArray.length; j++){
                 String paintNames = paintNamesArray[j];
                 System.out.println(paintNames);
             }
-
-
-
-
 
             String message;
             switch (amountOfDifferentShades) {
@@ -93,15 +103,15 @@ public class Main {
                     break;
             }
 
-            System.out.println("The total cost for " + PaintName + " will be " + totalPricePaint + " pounds");
+            System.out.println("The total cost for the price of the paint required will be " + totalPricePaint + " pounds");
             System.out.println("The total number of paint cans needed for this job is " + paintCansNeeded);
             System.out.println("The total number of walls we will be painting is " + amountOfWalls);
             System.out.println("The total cost of labour is " + totalLabourCost + " pounds");
             System.out.println("The total cost for this job is " + totalCost + " pounds");
+            whichPaintColour();
             System.out.println(laddersNeededOrNot);
             System.out.println(message);
             System.out.println("The work will be started on " + whatDayWillWeWorkOn);
-
             System.out.println("Do you want another quote?");
             String anotherQuote = userInput.nextLine();
 
@@ -112,5 +122,6 @@ public class Main {
         }
     }
 }
+
 
 
